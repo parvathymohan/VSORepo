@@ -1,0 +1,12 @@
+D:\WebApplication_SampleProject\SampleProject_DataAccess\bin\Debug\SampleProject_DataAccess.dll.config
+D:\WebApplication_SampleProject\SampleProject_DataAccess\bin\Debug\SampleProject_DataAccess.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess\bin\Debug\SampleProject_DataAccess.pdb
+D:\WebApplication_SampleProject\SampleProject_DataAccess\bin\Debug\EntityFramework.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess\bin\Debug\EntityFramework.SqlServerCompact.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess\bin\Debug\System.Data.SqlServerCe.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess\bin\Debug\EntityFramework.xml
+D:\WebApplication_SampleProject\SampleProject_DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\WebApplication_SampleProject\SampleProject_DataAccess\bin\Debug\EntityFramework.SqlServerCompact.xml
+D:\WebApplication_SampleProject\SampleProject_DataAccess\obj\Debug\SampleProject_DataAccess.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess\obj\Debug\SampleProject_DataAccess.pdb

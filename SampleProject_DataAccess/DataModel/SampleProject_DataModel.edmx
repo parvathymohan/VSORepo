@@ -1,0 +1,598 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HTATollDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Daily_Fleet_File_Details">
+          <Key>
+            <PropertyRef Name="Detail_Id" />
+          </Key>
+          <Property Name="Detail_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Header_Id" Type="int" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="1" />
+          <Property Name="VehicleIdNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LicensePlateNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LicensePlateState" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="ManufactureYear" Type="int" />
+          <Property Name="VehicleMake" Type="varchar" MaxLength="100" />
+          <Property Name="VehicleModel" Type="varchar" MaxLength="100" />
+          <Property Name="VehicleColor" Type="varchar" MaxLength="100" />
+          <Property Name="LocationGroup" Type="varchar" MaxLength="4" />
+          <Property Name="LocationCode" Type="varchar" MaxLength="6" />
+          <Property Name="LocationName" Type="varchar" MaxLength="100" />
+          <Property Name="Address1" Type="varchar" MaxLength="250" />
+          <Property Name="Address2" Type="varchar" MaxLength="250" />
+          <Property Name="City" Type="varchar" MaxLength="250" />
+          <Property Name="Address3" Type="varchar" MaxLength="250" />
+          <Property Name="DateTimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ErrorStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Daily_Fleet_File_Header">
+          <Key>
+            <PropertyRef Name="Header_Id" />
+          </Key>
+          <Property Name="Header_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="250" />
+          <Property Name="AgencyId" Type="int" />
+          <Property Name="FileDate" Type="datetime" />
+          <Property Name="DateTimeStamp" Type="datetime" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Error_Acknowledgement_Details">
+          <Key>
+            <PropertyRef Name="Detail_Id" />
+          </Key>
+          <Property Name="Detail_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Header_Id" Type="int" Nullable="false" />
+          <Property Name="License_Plate_Number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="License_Plate_State" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Error_Message" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Error_Code" Type="int" />
+          <Property Name="Date_Time_Stamp" Type="datetime" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Error_Acknowledgement_Header">
+          <Key>
+            <PropertyRef Name="Header_Id" />
+          </Key>
+          <Property Name="Header_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="File_Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="File_Processing_Attempt" Type="int" Nullable="false" />
+          <Property Name="Date_Time_Stamp" Type="datetime" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Error_Notes">
+          <Key>
+            <PropertyRef Name="NoteId" />
+          </Key>
+          <Property Name="NoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="250" />
+          <Property Name="NoteDate" Type="datetime" Nullable="false" />
+          <Property Name="FleetDetailId" Type="int" />
+          <Property Name="VechileDetailId" Type="int" />
+          <Property Name="User" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HTATollData.dbo.Error_Status' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Error_Status">
+          <Key>
+            <PropertyRef Name="ErrorStatus_Id" />
+            <PropertyRef Name="Error_Details" />
+          </Key>
+          <Property Name="ErrorStatus_Id" Type="int" Nullable="false" />
+          <Property Name="Error_Details" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicle_Upload_File_Details">
+          <Key>
+            <PropertyRef Name="Detail_Id" />
+          </Key>
+          <Property Name="Detail_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Error_Ack_Detail_Id" Type="int" />
+          <Property Name="Header_Id" Type="int" Nullable="false" />
+          <Property Name="License_Plate_Number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="License_Plate_State" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="EZTag_Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Action_Required" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Processing_Status" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Effective_Date" Type="datetime" Nullable="false" />
+          <Property Name="Date_Time_Stamp" Type="datetime" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VehicleIdNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Vehicle_Upload_File_Header">
+          <Key>
+            <PropertyRef Name="Header_Id" />
+          </Key>
+          <Property Name="Header_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="File_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Account_Id" Type="int" Nullable="false" />
+          <Property Name="File_Date" Type="datetime" Nullable="false" />
+          <Property Name="Date_Time_Stamp" Type="datetime" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Daily_Fleet_File_Details_Daily_Fleet_File_Header1">
+          <End Role="Daily_Fleet_File_Header" Type="Self.Daily_Fleet_File_Header" Multiplicity="1" />
+          <End Role="Daily_Fleet_File_Details" Type="Self.Daily_Fleet_File_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily_Fleet_File_Header">
+              <PropertyRef Name="Header_Id" />
+            </Principal>
+            <Dependent Role="Daily_Fleet_File_Details">
+              <PropertyRef Name="Header_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Error_Acknowledgement_Details_Daily_Fleet_File_Header">
+          <End Role="Error_Acknowledgement_Header" Type="Self.Error_Acknowledgement_Header" Multiplicity="1" />
+          <End Role="Error_Acknowledgement_Details" Type="Self.Error_Acknowledgement_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Error_Acknowledgement_Header">
+              <PropertyRef Name="Header_Id" />
+            </Principal>
+            <Dependent Role="Error_Acknowledgement_Details">
+              <PropertyRef Name="Header_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Error_Notes_Daily_Fleet_File_Details">
+          <End Role="Daily_Fleet_File_Details" Type="Self.Daily_Fleet_File_Details" Multiplicity="0..1" />
+          <End Role="Error_Notes" Type="Self.Error_Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily_Fleet_File_Details">
+              <PropertyRef Name="Detail_Id" />
+            </Principal>
+            <Dependent Role="Error_Notes">
+              <PropertyRef Name="FleetDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Error_Notes_Vehicle_Upload_File_Details">
+          <End Role="Vehicle_Upload_File_Details" Type="Self.Vehicle_Upload_File_Details" Multiplicity="0..1" />
+          <End Role="Error_Notes" Type="Self.Error_Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle_Upload_File_Details">
+              <PropertyRef Name="Detail_Id" />
+            </Principal>
+            <Dependent Role="Error_Notes">
+              <PropertyRef Name="VechileDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header">
+          <End Role="Error_Acknowledgement_Details" Type="Self.Error_Acknowledgement_Details" Multiplicity="0..1" />
+          <End Role="Vehicle_Upload_File_Details" Type="Self.Vehicle_Upload_File_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Error_Acknowledgement_Details">
+              <PropertyRef Name="Detail_Id" />
+            </Principal>
+            <Dependent Role="Vehicle_Upload_File_Details">
+              <PropertyRef Name="Error_Ack_Detail_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header1">
+          <End Role="Vehicle_Upload_File_Header" Type="Self.Vehicle_Upload_File_Header" Multiplicity="1" />
+          <End Role="Vehicle_Upload_File_Details" Type="Self.Vehicle_Upload_File_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle_Upload_File_Header">
+              <PropertyRef Name="Header_Id" />
+            </Principal>
+            <Dependent Role="Vehicle_Upload_File_Details">
+              <PropertyRef Name="Header_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HTATollDataModelStoreContainer">
+          <EntitySet Name="Daily_Fleet_File_Details" EntityType="Self.Daily_Fleet_File_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Daily_Fleet_File_Header" EntityType="Self.Daily_Fleet_File_Header" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error_Acknowledgement_Details" EntityType="Self.Error_Acknowledgement_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error_Acknowledgement_Header" EntityType="Self.Error_Acknowledgement_Header" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error_Notes" EntityType="Self.Error_Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicle_Upload_File_Details" EntityType="Self.Vehicle_Upload_File_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicle_Upload_File_Header" EntityType="Self.Vehicle_Upload_File_Header" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error_Status" EntityType="Self.Error_Status" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Error_Status].[ErrorStatus_Id] AS [ErrorStatus_Id], 
+    [Error_Status].[Error_Details] AS [Error_Details]
+    FROM [dbo].[Error_Status] AS [Error_Status]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Daily_Fleet_File_Details_Daily_Fleet_File_Header1" Association="Self.FK_Daily_Fleet_File_Details_Daily_Fleet_File_Header1">
+            <End Role="Daily_Fleet_File_Header" EntitySet="Daily_Fleet_File_Header" />
+            <End Role="Daily_Fleet_File_Details" EntitySet="Daily_Fleet_File_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Error_Acknowledgement_Details_Daily_Fleet_File_Header" Association="Self.FK_Error_Acknowledgement_Details_Daily_Fleet_File_Header">
+            <End Role="Error_Acknowledgement_Header" EntitySet="Error_Acknowledgement_Header" />
+            <End Role="Error_Acknowledgement_Details" EntitySet="Error_Acknowledgement_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Error_Notes_Daily_Fleet_File_Details" Association="Self.FK_Error_Notes_Daily_Fleet_File_Details">
+            <End Role="Daily_Fleet_File_Details" EntitySet="Daily_Fleet_File_Details" />
+            <End Role="Error_Notes" EntitySet="Error_Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Error_Notes_Vehicle_Upload_File_Details" Association="Self.FK_Error_Notes_Vehicle_Upload_File_Details">
+            <End Role="Vehicle_Upload_File_Details" EntitySet="Vehicle_Upload_File_Details" />
+            <End Role="Error_Notes" EntitySet="Error_Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header" Association="Self.FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header">
+            <End Role="Error_Acknowledgement_Details" EntitySet="Error_Acknowledgement_Details" />
+            <End Role="Vehicle_Upload_File_Details" EntitySet="Vehicle_Upload_File_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header1" Association="Self.FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header1">
+            <End Role="Vehicle_Upload_File_Header" EntitySet="Vehicle_Upload_File_Header" />
+            <End Role="Vehicle_Upload_File_Details" EntitySet="Vehicle_Upload_File_Details" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HTATollDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Daily_Fleet_File_Details">
+          <Key>
+            <PropertyRef Name="Detail_Id" />
+          </Key>
+          <Property Name="Detail_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Header_Id" Type="Int32" Nullable="false" />
+          <Property Name="Brand" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleIdNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LicensePlateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LicensePlateState" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ManufactureYear" Type="Int32" />
+          <Property Name="VehicleMake" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleModel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleColor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocationGroup" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="LocationCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="LocationName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DateTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ErrorStatus" Type="Int32" />
+          <NavigationProperty Name="Daily_Fleet_File_Header" Relationship="Self.FK_Daily_Fleet_File_Details_Daily_Fleet_File_Header1" FromRole="Daily_Fleet_File_Details" ToRole="Daily_Fleet_File_Header" />
+          <NavigationProperty Name="Error_Notes" Relationship="Self.FK_Error_Notes_Daily_Fleet_File_Details" FromRole="Daily_Fleet_File_Details" ToRole="Error_Notes" />
+        </EntityType>
+        <EntityType Name="Daily_Fleet_File_Header">
+          <Key>
+            <PropertyRef Name="Header_Id" />
+          </Key>
+          <Property Name="Header_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AgencyId" Type="Int32" />
+          <Property Name="FileDate" Type="DateTime" Precision="3" />
+          <Property Name="DateTimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Daily_Fleet_File_Details" Relationship="Self.FK_Daily_Fleet_File_Details_Daily_Fleet_File_Header1" FromRole="Daily_Fleet_File_Header" ToRole="Daily_Fleet_File_Details" />
+        </EntityType>
+        <EntityType Name="Error_Acknowledgement_Details">
+          <Key>
+            <PropertyRef Name="Detail_Id" />
+          </Key>
+          <Property Name="Detail_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Header_Id" Type="Int32" Nullable="false" />
+          <Property Name="License_Plate_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="License_Plate_State" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Error_Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Error_Code" Type="Int32" />
+          <Property Name="Date_Time_Stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Error_Acknowledgement_Header" Relationship="Self.FK_Error_Acknowledgement_Details_Daily_Fleet_File_Header" FromRole="Error_Acknowledgement_Details" ToRole="Error_Acknowledgement_Header" />
+          <NavigationProperty Name="Vehicle_Upload_File_Details" Relationship="Self.FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header" FromRole="Error_Acknowledgement_Details" ToRole="Vehicle_Upload_File_Details" />
+        </EntityType>
+        <EntityType Name="Error_Acknowledgement_Header">
+          <Key>
+            <PropertyRef Name="Header_Id" />
+          </Key>
+          <Property Name="Header_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="File_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="File_Processing_Attempt" Type="Int32" Nullable="false" />
+          <Property Name="Date_Time_Stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Error_Acknowledgement_Details" Relationship="Self.FK_Error_Acknowledgement_Details_Daily_Fleet_File_Header" FromRole="Error_Acknowledgement_Header" ToRole="Error_Acknowledgement_Details" />
+        </EntityType>
+        <EntityType Name="Error_Notes">
+          <Key>
+            <PropertyRef Name="NoteId" />
+          </Key>
+          <Property Name="NoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Note" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="NoteDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FleetDetailId" Type="Int32" />
+          <Property Name="VechileDetailId" Type="Int32" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Daily_Fleet_File_Details" Relationship="Self.FK_Error_Notes_Daily_Fleet_File_Details" FromRole="Error_Notes" ToRole="Daily_Fleet_File_Details" />
+          <NavigationProperty Name="Vehicle_Upload_File_Details" Relationship="Self.FK_Error_Notes_Vehicle_Upload_File_Details" FromRole="Error_Notes" ToRole="Vehicle_Upload_File_Details" />
+        </EntityType>
+        <EntityType Name="Vehicle_Upload_File_Details">
+          <Key>
+            <PropertyRef Name="Detail_Id" />
+          </Key>
+          <Property Name="Detail_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Error_Ack_Detail_Id" Type="Int32" />
+          <Property Name="Header_Id" Type="Int32" Nullable="false" />
+          <Property Name="License_Plate_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="License_Plate_State" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EZTag_Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Action_Required" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Processing_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Effective_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_Time_Stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VehicleIdNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Error_Acknowledgement_Details" Relationship="Self.FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header" FromRole="Vehicle_Upload_File_Details" ToRole="Error_Acknowledgement_Details" />
+          <NavigationProperty Name="Error_Notes" Relationship="Self.FK_Error_Notes_Vehicle_Upload_File_Details" FromRole="Vehicle_Upload_File_Details" ToRole="Error_Notes" />
+          <NavigationProperty Name="Vehicle_Upload_File_Header" Relationship="Self.FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header1" FromRole="Vehicle_Upload_File_Details" ToRole="Vehicle_Upload_File_Header" />
+        </EntityType>
+        <EntityType Name="Vehicle_Upload_File_Header">
+          <Key>
+            <PropertyRef Name="Header_Id" />
+          </Key>
+          <Property Name="Header_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="File_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Account_Id" Type="Int32" Nullable="false" />
+          <Property Name="File_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_Time_Stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehicle_Upload_File_Details" Relationship="Self.FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header1" FromRole="Vehicle_Upload_File_Header" ToRole="Vehicle_Upload_File_Details" />
+        </EntityType>
+        <EntityType Name="Error_Status">
+          <Key>
+            <PropertyRef Name="ErrorStatus_Id" />
+            <PropertyRef Name="Error_Details" />
+          </Key>
+          <Property Name="ErrorStatus_Id" Type="Int32" Nullable="false" />
+          <Property Name="Error_Details" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Daily_Fleet_File_Details_Daily_Fleet_File_Header1">
+          <End Role="Daily_Fleet_File_Header" Type="Self.Daily_Fleet_File_Header" Multiplicity="1" />
+          <End Role="Daily_Fleet_File_Details" Type="Self.Daily_Fleet_File_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily_Fleet_File_Header">
+              <PropertyRef Name="Header_Id" />
+            </Principal>
+            <Dependent Role="Daily_Fleet_File_Details">
+              <PropertyRef Name="Header_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Error_Notes_Daily_Fleet_File_Details">
+          <End Role="Daily_Fleet_File_Details" Type="Self.Daily_Fleet_File_Details" Multiplicity="0..1" />
+          <End Role="Error_Notes" Type="Self.Error_Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daily_Fleet_File_Details">
+              <PropertyRef Name="Detail_Id" />
+            </Principal>
+            <Dependent Role="Error_Notes">
+              <PropertyRef Name="FleetDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Error_Acknowledgement_Details_Daily_Fleet_File_Header">
+          <End Role="Error_Acknowledgement_Header" Type="Self.Error_Acknowledgement_Header" Multiplicity="1" />
+          <End Role="Error_Acknowledgement_Details" Type="Self.Error_Acknowledgement_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Error_Acknowledgement_Header">
+              <PropertyRef Name="Header_Id" />
+            </Principal>
+            <Dependent Role="Error_Acknowledgement_Details">
+              <PropertyRef Name="Header_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header">
+          <End Role="Error_Acknowledgement_Details" Type="Self.Error_Acknowledgement_Details" Multiplicity="0..1" />
+          <End Role="Vehicle_Upload_File_Details" Type="Self.Vehicle_Upload_File_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Error_Acknowledgement_Details">
+              <PropertyRef Name="Detail_Id" />
+            </Principal>
+            <Dependent Role="Vehicle_Upload_File_Details">
+              <PropertyRef Name="Error_Ack_Detail_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Error_Notes_Vehicle_Upload_File_Details">
+          <End Role="Vehicle_Upload_File_Details" Type="Self.Vehicle_Upload_File_Details" Multiplicity="0..1" />
+          <End Role="Error_Notes" Type="Self.Error_Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle_Upload_File_Details">
+              <PropertyRef Name="Detail_Id" />
+            </Principal>
+            <Dependent Role="Error_Notes">
+              <PropertyRef Name="VechileDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header1">
+          <End Role="Vehicle_Upload_File_Header" Type="Self.Vehicle_Upload_File_Header" Multiplicity="1" />
+          <End Role="Vehicle_Upload_File_Details" Type="Self.Vehicle_Upload_File_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle_Upload_File_Header">
+              <PropertyRef Name="Header_Id" />
+            </Principal>
+            <Dependent Role="Vehicle_Upload_File_Details">
+              <PropertyRef Name="Header_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HTATollDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Daily_Fleet_File_Details" EntityType="Self.Daily_Fleet_File_Details" />
+          <EntitySet Name="Daily_Fleet_File_Header" EntityType="Self.Daily_Fleet_File_Header" />
+          <EntitySet Name="Error_Acknowledgement_Details" EntityType="Self.Error_Acknowledgement_Details" />
+          <EntitySet Name="Error_Acknowledgement_Header" EntityType="Self.Error_Acknowledgement_Header" />
+          <EntitySet Name="Error_Notes" EntityType="Self.Error_Notes" />
+          <EntitySet Name="Vehicle_Upload_File_Details" EntityType="Self.Vehicle_Upload_File_Details" />
+          <EntitySet Name="Vehicle_Upload_File_Header" EntityType="Self.Vehicle_Upload_File_Header" />
+          <EntitySet Name="Error_Status" EntityType="Self.Error_Status" />
+          <AssociationSet Name="FK_Daily_Fleet_File_Details_Daily_Fleet_File_Header1" Association="Self.FK_Daily_Fleet_File_Details_Daily_Fleet_File_Header1">
+            <End Role="Daily_Fleet_File_Header" EntitySet="Daily_Fleet_File_Header" />
+            <End Role="Daily_Fleet_File_Details" EntitySet="Daily_Fleet_File_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Error_Notes_Daily_Fleet_File_Details" Association="Self.FK_Error_Notes_Daily_Fleet_File_Details">
+            <End Role="Daily_Fleet_File_Details" EntitySet="Daily_Fleet_File_Details" />
+            <End Role="Error_Notes" EntitySet="Error_Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Error_Acknowledgement_Details_Daily_Fleet_File_Header" Association="Self.FK_Error_Acknowledgement_Details_Daily_Fleet_File_Header">
+            <End Role="Error_Acknowledgement_Header" EntitySet="Error_Acknowledgement_Header" />
+            <End Role="Error_Acknowledgement_Details" EntitySet="Error_Acknowledgement_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header" Association="Self.FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header">
+            <End Role="Error_Acknowledgement_Details" EntitySet="Error_Acknowledgement_Details" />
+            <End Role="Vehicle_Upload_File_Details" EntitySet="Vehicle_Upload_File_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Error_Notes_Vehicle_Upload_File_Details" Association="Self.FK_Error_Notes_Vehicle_Upload_File_Details">
+            <End Role="Vehicle_Upload_File_Details" EntitySet="Vehicle_Upload_File_Details" />
+            <End Role="Error_Notes" EntitySet="Error_Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header1" Association="Self.FK_Vehicle_Upload_File_Details_Vehicle_Upload_File_Header1">
+            <End Role="Vehicle_Upload_File_Header" EntitySet="Vehicle_Upload_File_Header" />
+            <End Role="Vehicle_Upload_File_Details" EntitySet="Vehicle_Upload_File_Details" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HTATollDataModelStoreContainer" CdmEntityContainer="HTATollDataEntities">
+          <EntitySetMapping Name="Daily_Fleet_File_Details">
+            <EntityTypeMapping TypeName="HTATollDataModel.Daily_Fleet_File_Details">
+              <MappingFragment StoreEntitySet="Daily_Fleet_File_Details">
+                <ScalarProperty Name="Detail_Id" ColumnName="Detail_Id" />
+                <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="VehicleIdNumber" ColumnName="VehicleIdNumber" />
+                <ScalarProperty Name="LicensePlateNumber" ColumnName="LicensePlateNumber" />
+                <ScalarProperty Name="LicensePlateState" ColumnName="LicensePlateState" />
+                <ScalarProperty Name="ManufactureYear" ColumnName="ManufactureYear" />
+                <ScalarProperty Name="VehicleMake" ColumnName="VehicleMake" />
+                <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+                <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
+                <ScalarProperty Name="LocationGroup" ColumnName="LocationGroup" />
+                <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="DateTimeStamp" ColumnName="DateTimeStamp" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="ErrorStatus" ColumnName="ErrorStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Daily_Fleet_File_Header">
+            <EntityTypeMapping TypeName="HTATollDataModel.Daily_Fleet_File_Header">
+              <MappingFragment StoreEntitySet="Daily_Fleet_File_Header">
+                <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="AgencyId" ColumnName="AgencyId" />
+                <ScalarProperty Name="FileDate" ColumnName="FileDate" />
+                <ScalarProperty Name="DateTimeStamp" ColumnName="DateTimeStamp" />
+                <ScalarProperty Name="User" ColumnName="User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Error_Acknowledgement_Details">
+            <EntityTypeMapping TypeName="HTATollDataModel.Error_Acknowledgement_Details">
+              <MappingFragment StoreEntitySet="Error_Acknowledgement_Details">
+                <ScalarProperty Name="Detail_Id" ColumnName="Detail_Id" />
+                <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+                <ScalarProperty Name="License_Plate_Number" ColumnName="License_Plate_Number" />
+                <ScalarProperty Name="License_Plate_State" ColumnName="License_Plate_State" />
+                <ScalarProperty Name="Error_Message" ColumnName="Error_Message" />
+                <ScalarProperty Name="Error_Code" ColumnName="Error_Code" />
+                <ScalarProperty Name="Date_Time_Stamp" ColumnName="Date_Time_Stamp" />
+                <ScalarProperty Name="User" ColumnName="User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Error_Acknowledgement_Header">
+            <EntityTypeMapping TypeName="HTATollDataModel.Error_Acknowledgement_Header">
+              <MappingFragment StoreEntitySet="Error_Acknowledgement_Header">
+                <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+                <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+                <ScalarProperty Name="File_Processing_Attempt" ColumnName="File_Processing_Attempt" />
+                <ScalarProperty Name="Date_Time_Stamp" ColumnName="Date_Time_Stamp" />
+                <ScalarProperty Name="User" ColumnName="User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Error_Notes">
+            <EntityTypeMapping TypeName="HTATollDataModel.Error_Notes">
+              <MappingFragment StoreEntitySet="Error_Notes">
+                <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="NoteDate" ColumnName="NoteDate" />
+                <ScalarProperty Name="FleetDetailId" ColumnName="FleetDetailId" />
+                <ScalarProperty Name="VechileDetailId" ColumnName="VechileDetailId" />
+                <ScalarProperty Name="User" ColumnName="User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicle_Upload_File_Details">
+            <EntityTypeMapping TypeName="HTATollDataModel.Vehicle_Upload_File_Details">
+              <MappingFragment StoreEntitySet="Vehicle_Upload_File_Details">
+                <ScalarProperty Name="Detail_Id" ColumnName="Detail_Id" />
+                <ScalarProperty Name="Error_Ack_Detail_Id" ColumnName="Error_Ack_Detail_Id" />
+                <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+                <ScalarProperty Name="License_Plate_Number" ColumnName="License_Plate_Number" />
+                <ScalarProperty Name="License_Plate_State" ColumnName="License_Plate_State" />
+                <ScalarProperty Name="EZTag_Id" ColumnName="EZTag_Id" />
+                <ScalarProperty Name="Action_Required" ColumnName="Action_Required" />
+                <ScalarProperty Name="Processing_Status" ColumnName="Processing_Status" />
+                <ScalarProperty Name="Effective_Date" ColumnName="Effective_Date" />
+                <ScalarProperty Name="Date_Time_Stamp" ColumnName="Date_Time_Stamp" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="VehicleIdNumber" ColumnName="VehicleIdNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicle_Upload_File_Header">
+            <EntityTypeMapping TypeName="HTATollDataModel.Vehicle_Upload_File_Header">
+              <MappingFragment StoreEntitySet="Vehicle_Upload_File_Header">
+                <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+                <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+                <ScalarProperty Name="File_Date" ColumnName="File_Date" />
+                <ScalarProperty Name="Date_Time_Stamp" ColumnName="Date_Time_Stamp" />
+                <ScalarProperty Name="User" ColumnName="User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Error_Status">
+            <EntityTypeMapping TypeName="HTATollDataModel.Error_Status">
+              <MappingFragment StoreEntitySet="Error_Status">
+                <ScalarProperty Name="ErrorStatus_Id" ColumnName="ErrorStatus_Id" />
+                <ScalarProperty Name="Error_Details" ColumnName="Error_Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

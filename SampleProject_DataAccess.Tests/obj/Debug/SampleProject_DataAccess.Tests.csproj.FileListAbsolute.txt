@@ -1,0 +1,12 @@
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\obj\Debug\SampleProject_DataAccess.Tests.csprojResolveAssemblyReference.cache
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\bin\Debug\SampleProject_DataAccess.Tests.dll.config
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\bin\Debug\SampleProject_DataAccess.Tests.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\bin\Debug\SampleProject_DataAccess.Tests.pdb
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\bin\Debug\EntityFramework.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\bin\Debug\EntityFramework.SqlServer.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\bin\Debug\SampleProject_DataAccess.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\bin\Debug\SampleProject_DataAccess.pdb
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\bin\Debug\EntityFramework.xml
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\bin\Debug\EntityFramework.SqlServer.xml
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\obj\Debug\SampleProject_DataAccess.Tests.dll
+D:\WebApplication_SampleProject\SampleProject_DataAccess.Tests\obj\Debug\SampleProject_DataAccess.Tests.pdb

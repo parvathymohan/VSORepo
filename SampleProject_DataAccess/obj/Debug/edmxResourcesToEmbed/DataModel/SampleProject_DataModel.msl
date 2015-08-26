@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HTATollDataModelStoreContainer" CdmEntityContainer="HTATollDataEntities">
+    <EntitySetMapping Name="Daily_Fleet_File_Details">
+      <EntityTypeMapping TypeName="HTATollDataModel.Daily_Fleet_File_Details">
+        <MappingFragment StoreEntitySet="Daily_Fleet_File_Details">
+          <ScalarProperty Name="Detail_Id" ColumnName="Detail_Id" />
+          <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="VehicleIdNumber" ColumnName="VehicleIdNumber" />
+          <ScalarProperty Name="LicensePlateNumber" ColumnName="LicensePlateNumber" />
+          <ScalarProperty Name="LicensePlateState" ColumnName="LicensePlateState" />
+          <ScalarProperty Name="ManufactureYear" ColumnName="ManufactureYear" />
+          <ScalarProperty Name="VehicleMake" ColumnName="VehicleMake" />
+          <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+          <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
+          <ScalarProperty Name="LocationGroup" ColumnName="LocationGroup" />
+          <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address3" ColumnName="Address3" />
+          <ScalarProperty Name="DateTimeStamp" ColumnName="DateTimeStamp" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="ErrorStatus" ColumnName="ErrorStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Daily_Fleet_File_Header">
+      <EntityTypeMapping TypeName="HTATollDataModel.Daily_Fleet_File_Header">
+        <MappingFragment StoreEntitySet="Daily_Fleet_File_Header">
+          <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="AgencyId" ColumnName="AgencyId" />
+          <ScalarProperty Name="FileDate" ColumnName="FileDate" />
+          <ScalarProperty Name="DateTimeStamp" ColumnName="DateTimeStamp" />
+          <ScalarProperty Name="User" ColumnName="User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Error_Acknowledgement_Details">
+      <EntityTypeMapping TypeName="HTATollDataModel.Error_Acknowledgement_Details">
+        <MappingFragment StoreEntitySet="Error_Acknowledgement_Details">
+          <ScalarProperty Name="Detail_Id" ColumnName="Detail_Id" />
+          <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+          <ScalarProperty Name="License_Plate_Number" ColumnName="License_Plate_Number" />
+          <ScalarProperty Name="License_Plate_State" ColumnName="License_Plate_State" />
+          <ScalarProperty Name="Error_Message" ColumnName="Error_Message" />
+          <ScalarProperty Name="Error_Code" ColumnName="Error_Code" />
+          <ScalarProperty Name="Date_Time_Stamp" ColumnName="Date_Time_Stamp" />
+          <ScalarProperty Name="User" ColumnName="User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Error_Acknowledgement_Header">
+      <EntityTypeMapping TypeName="HTATollDataModel.Error_Acknowledgement_Header">
+        <MappingFragment StoreEntitySet="Error_Acknowledgement_Header">
+          <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+          <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+          <ScalarProperty Name="File_Processing_Attempt" ColumnName="File_Processing_Attempt" />
+          <ScalarProperty Name="Date_Time_Stamp" ColumnName="Date_Time_Stamp" />
+          <ScalarProperty Name="User" ColumnName="User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Error_Notes">
+      <EntityTypeMapping TypeName="HTATollDataModel.Error_Notes">
+        <MappingFragment StoreEntitySet="Error_Notes">
+          <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="NoteDate" ColumnName="NoteDate" />
+          <ScalarProperty Name="FleetDetailId" ColumnName="FleetDetailId" />
+          <ScalarProperty Name="VechileDetailId" ColumnName="VechileDetailId" />
+          <ScalarProperty Name="User" ColumnName="User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicle_Upload_File_Details">
+      <EntityTypeMapping TypeName="HTATollDataModel.Vehicle_Upload_File_Details">
+        <MappingFragment StoreEntitySet="Vehicle_Upload_File_Details">
+          <ScalarProperty Name="Detail_Id" ColumnName="Detail_Id" />
+          <ScalarProperty Name="Error_Ack_Detail_Id" ColumnName="Error_Ack_Detail_Id" />
+          <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+          <ScalarProperty Name="License_Plate_Number" ColumnName="License_Plate_Number" />
+          <ScalarProperty Name="License_Plate_State" ColumnName="License_Plate_State" />
+          <ScalarProperty Name="EZTag_Id" ColumnName="EZTag_Id" />
+          <ScalarProperty Name="Action_Required" ColumnName="Action_Required" />
+          <ScalarProperty Name="Processing_Status" ColumnName="Processing_Status" />
+          <ScalarProperty Name="Effective_Date" ColumnName="Effective_Date" />
+          <ScalarProperty Name="Date_Time_Stamp" ColumnName="Date_Time_Stamp" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="VehicleIdNumber" ColumnName="VehicleIdNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicle_Upload_File_Header">
+      <EntityTypeMapping TypeName="HTATollDataModel.Vehicle_Upload_File_Header">
+        <MappingFragment StoreEntitySet="Vehicle_Upload_File_Header">
+          <ScalarProperty Name="Header_Id" ColumnName="Header_Id" />
+          <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+          <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+          <ScalarProperty Name="File_Date" ColumnName="File_Date" />
+          <ScalarProperty Name="Date_Time_Stamp" ColumnName="Date_Time_Stamp" />
+          <ScalarProperty Name="User" ColumnName="User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Error_Status">
+      <EntityTypeMapping TypeName="HTATollDataModel.Error_Status">
+        <MappingFragment StoreEntitySet="Error_Status">
+          <ScalarProperty Name="ErrorStatus_Id" ColumnName="ErrorStatus_Id" />
+          <ScalarProperty Name="Error_Details" ColumnName="Error_Details" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
